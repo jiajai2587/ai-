@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章同步助手</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 头部 -->
+    <header class="header">
+      <div class="header-left">
+        <img src="../icons/icon32.png" alt="Logo" class="logo">
+        <h1 class="title">文章同步助手</h1>
+      </div>
+      <div class="header-right">
+        <button class="btn-icon" id="btn-settings" title="设置">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path fill="currentColor" d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97 0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1 0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66Z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- 标签页 -->
+    <div class="tabs">
+      <button class="tab active" data-tab="sync">同步发布</button>
+      <button class="tab" data-tab="extract">内容提取</button>
+      <button class="tab" data-tab="history">发布历史</button>
+    </div>
+
+    <!-- 同步发布标签页 -->
+    <div class="tab-content active" id="tab-sync">
+      <!-- 文章预览 -->
+      <div class="section">
+        <div class="section-header">
+          <h3 class="section-title">文章预览</h3>
+          <button class="btn-text" id="btn-refresh">重新提取</button>
+        </div>
+        <div class="article-preview" id="article-preview">
+          <div class="article-placeholder">
+            <p>请先打开要同步的文章页面</p>
+            <p class="hint">支持微信公众号、知乎、掘金、CSDN 等平台文章</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI 功能 -->
+      <div class="section">
+        <div class="section-header">
+          <h3 class="section-title">AI 功能</h3>
+        </div>
+        <div class="ai-actions">
+          <button class="btn-ai" data-action="optimize">
+            <span class="icon">✨</span>优化文章
+          </button>
+          <button class="btn-ai" data-action="translate">
+            <span class="icon">🌐</span>翻译
+          </button>
+          <button class="btn-ai" data-action="summarize">
+            <span class="icon">📝</span>生成摘要
+          </button>
+          <button class="btn-ai" data-action="title">
+            <span class="icon">💡</span>优化标题
+          </button>
+        </div>
+      </div>
+
+      <!-- 平台选择 -->
+      <div class="section">
+        <div class="section-header">
+          <h3 class="section-title">目标平台</h3>
+          <button class="btn-text" id="btn-select-all">全选</button>
+        </div>
+        <div class="platform-groups" id="platform-list">
+          <!-- 平台列表将由 JS 动态生成 -->
+        </div>
+      </div>
+
+      <!-- 发布选项 -->
+      <div class="section">
+        <div class="section-header">
+          <h3 class="section-title">发布选项</h3>
+        </div>
+        <div class="options">
+          <label class="option">
+            <input type="checkbox" id="opt-draft" checked>
+            <span>保存为草稿</span>
+          </label>
+          <label class="option">
+            <input type="checkbox" id="opt-images" checked>
+            <span>自动上传图片</span>
+          </label>
+          <label class="option">
+            <input type="checkbox" id="opt-notify">
+            <span>发布完成后通知</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 操作按钮 -->
+      <div class="actions">
+        <button class="btn btn-secondary" id="btn-export">
+          <svg viewBox="0 0 24 24" width="16" height="16">
+            <path fill="currentColor" d="M5 20h14v-2H5v2m14-9h-4V3H9v8H5l7 7 7-7Z"/>
+          </svg>
+          导出 Markdown
+        </button>
+        <button class="btn btn-primary" id="btn-publish">
+          <svg viewBox="0 0 24 24" width="16" height="16">
+            <path fill="currentColor" d="M2 12l5-5 1.41 1.41L5.83 11h13.34l-2.58-2.59L18 7l5 5-5 5-1.41-1.41L19.17 13H5.83l2.58 2.59L7 17l-5-5Z"/>
+          </svg>
+          一键发布
+        </button>
+      </div>
+
+      <!-- 发布状态 -->
+      <div class="publish-status" id="publish-status" style="display: none;">
+        <div class="status-header">
+          <span class="status-title">发布进度</span>
+          <span class="status-count" id="status-count">0/0</span>
+        </div>
+        <div class="status-list" id="status-list">
+          <!-- 发布状态列表 -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 内容提取标签页 -->
+    <div class="tab-content" id="tab-extract">
+      <div class="section">
+        <h3 class="section-title">当前页面信息</h3>
+        <div class="page-info" id="page-info">
+          <div class="info-item">
+            <label>标题</label>
+            <p id="page-title">-</p>
+          </div>
+          <div class="info-item">
+            <label>来源</label>
+            <p id="page-source">-</p>
+          </div>
+          <div class="info-item">
+            <label>字数</label>
+            <p id="page-words">-</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">封面图</h3>
+        <div class="cover-image" id="cover-image">
+          <div class="cover-placeholder">
+            <svg viewBox="0 0 24 24" width="48" height="48">
+              <path fill="currentColor" d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2M5 17l3.5-4.5 2.5 3.01L14.5 11l4.5 6H5Z" opacity="0.3"/>
+            </svg>
+            <p>未检测到封面图</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">内容预览</h3>
+        <div class="content-preview" id="content-preview">
+          <p class="placeholder">提取内容后显示预览...</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-secondary" id="btn-copy-md">
+          复制 Markdown
+        </button>
+        <button class="btn btn-secondary" id="btn-download-zip">
+          下载 ZIP 包
+        </button>
+        <button class="btn btn-primary" id="btn-extract">
+          提取内容
+        </button>
+      </div>
+    </div>
+
+    <!-- 发布历史标签页 -->
+    <div class="tab-content" id="tab-history">
+      <div class="section">
+        <div class="section-header">
+          <h3 class="section-title">最近发布</h3>
+          <button class="btn-text" id="btn-clear-history">清空</button>
+        </div>
+        <div class="history-list" id="history-list">
+          <p class="empty-hint">暂无发布记录</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 加载遮罩 -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p class="loading-text" id="loading-text">处理中...</p>
+  </div>
+
+  <!-- Toast 提示 -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../utils/storage.js"></script>
+  <script src="../utils/helpers.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

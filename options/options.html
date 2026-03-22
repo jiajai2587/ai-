@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章同步助手 - 设置</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="../icons/icon32.png" alt="Logo" class="logo">
+        <h1 class="sidebar-title">文章同步助手</h1>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#general" class="nav-item active" data-section="general">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97 0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1 0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66Z"/>
+          </svg>
+          通用设置
+        </a>
+        <a href="#platforms" class="nav-item" data-section="platforms">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M16 20h2a2 2 0 0 0 2-2V8h-4v12M8 20H6a2 2 0 0 1-2-2V8h4v12m4-16a1 1 0 0 1 1 1v1h2a2 2 0 0 1 2 2v12a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V8a2 2 0 0 1 2-2h2V5a1 1 0 0 1 1-1h2z"/>
+          </svg>
+          平台管理
+        </a>
+        <a href="#ai" class="nav-item" data-section="ai">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.26a1.72 1.72 0 0 1-1.53-.28l-.76-.56c-1.57.67-3.34.67-4.91 0l-.76.56a1.72 1.72 0 0 1-1.53.28l-.79-.26c-.48-.16-.87-.53-1.06-1-.2-.47-.17-1 .06-1.45l.77-1.49c-1.27-.91-1.98-2.4-1.89-3.95.1-1.72 1.23-3.2 2.88-3.79l-.38-1.46a1.72 1.72 0 0 1 .35-1.53c.36-.43.89-.67 1.44-.67h.73c.55 0 1.08.24 1.44.67.36.43.5 1 .35 1.53l-.38 1.46c1.65.59 2.78 2.07 2.88 3.79zM12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+          </svg>
+          AI 设置
+        </a>
+        <a href="#selfhosted" class="nav-item" data-section="selfhosted">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M4 6h16v2H4V6m0 5h16v2H4v-2m0 5h16v2H4v-2z"/>
+          </svg>
+          自建站
+        </a>
+        <a href="#about" class="nav-item" data-section="about">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2z"/>
+          </svg>
+          关于
+        </a>
+      </nav>
+    </aside>
+
+    <!-- 主内容 -->
+    <main class="main-content">
+      <!-- 通用设置 -->
+      <section id="general" class="section active">
+        <h2 class="section-title">通用设置</h2>
+
+        <div class="form-group">
+          <label class="form-label">默认发布模式</label>
+          <div class="form-radio-group">
+            <label class="radio-label">
+              <input type="radio" name="publishMode" value="draft" checked>
+              <span>保存为草稿</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="publishMode" value="publish">
+              <span>直接发布</span>
+            </label>
+          </div>
+          <p class="form-hint">建议选择草稿模式，方便二次编辑后再发布</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">图片处理</label>
+          <div class="form-checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="autoUploadImages" checked>
+              <span>自动上传图片到目标平台</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="downloadImages">
+              <span>导出时下载图片到本地</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">发布失败重试次数</label>
+          <select class="form-select" id="maxRetries">
+            <option value="1">1 次</option>
+            <option value="2">2 次</option>
+            <option value="3" selected>3 次</option>
+            <option value="5">5 次</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">发布完成通知</label>
+          <label class="switch-label">
+            <input type="checkbox" id="showNotification" checked>
+            <span class="switch"></span>
+            <span>显示系统通知</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- 平台管理 -->
+      <section id="platforms" class="section">
+        <h2 class="section-title">平台管理</h2>
+        <p class="section-desc">管理各平台的登录状态和发布配置</p>
+
+        <div class="platform-list">
+          <!-- 平台卡片将由 JS 动态生成 -->
+        </div>
+      </section>
+
+      <!-- AI 设置 -->
+      <section id="ai" class="section">
+        <h2 class="section-title">AI 设置</h2>
+
+        <div class="form-group">
+          <label class="form-label">AI 服务提供商</label>
+          <select class="form-select" id="aiProvider">
+            <option value="chrome">Chrome Built-in AI（免费）</option>
+            <option value="openai">OpenAI API</option>
+            <option value="claude">Claude API</option>
+          </select>
+          <p class="form-hint">Chrome Built-in AI 需要 Chrome 131+ 版本</p>
+        </div>
+
+        <div id="openaiSettings" class="ai-settings" style="display: none;">
+          <div class="form-group">
+            <label class="form-label">OpenAI API Key</label>
+            <input type="password" class="form-input" id="openaiKey" placeholder="sk-...">
+            <p class="form-hint">可在 <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI 平台</a> 获取</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">模型选择</label>
+            <select class="form-select" id="openaiModel">
+              <option value="gpt-4o-mini">GPT-4o Mini（推荐）</option>
+              <option value="gpt-4o">GPT-4o</option>
+              <option value="gpt-4-turbo">GPT-4 Turbo</option>
+              <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="claudeSettings" class="ai-settings" style="display: none;">
+          <div class="form-group">
+            <label class="form-label">Claude API Key</label>
+            <input type="password" class="form-input" id="claudeKey" placeholder="sk-ant-...">
+            <p class="form-hint">可在 <a href="https://console.anthropic.com/" target="_blank">Anthropic 控制台</a> 获取</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">模型选择</label>
+            <select class="form-select" id="claudeModel">
+              <option value="claude-3-5-sonnet-20241022">Claude 3.5 Sonnet（推荐）</option>
+              <option value="claude-3-5-haiku-20241022">Claude 3.5 Haiku</option>
+              <option value="claude-3-opus-20240229">Claude 3 Opus</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ai-features">
+          <h3 class="subsection-title">支持的 AI 功能</h3>
+          <ul class="feature-list">
+            <li>文章优化：改进文章结构、表达和可读性</li>
+            <li>多语言翻译：将文章翻译成其他语言</li>
+            <li>摘要生成：自动生成文章摘要</li>
+            <li>标题优化：生成吸引人的标题建议</li>
+            <li>关键词提取：提取文章关键词用于 SEO</li>
+            <li>文章校对：检查语法错误和错别字</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 自建站 -->
+      <section id="selfhosted" class="section">
+        <h2 class="section-title">自建站设置</h2>
+        <p class="section-desc">配置 WordPress、Typecho、博客园等自建站平台的发布参数</p>
+
+        <div class="selfhosted-list">
+          <!-- WordPress -->
+          <div class="selfhosted-card">
+            <div class="card-header">
+              <h3>WordPress</h3>
+              <label class="switch-label">
+                <input type="checkbox" id="wordpressEnabled">
+                <span class="switch"></span>
+              </label>
+            </div>
+            <div class="card-content">
+              <div class="form-group">
+                <label class="form-label">站点 URL</label>
+                <input type="url" class="form-input" id="wordpressUrl" placeholder="https://your-site.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label">用户名</label>
+                <input type="text" class="form-input" id="wordpressUsername" placeholder="用户名">
+              </div>
+              <div class="form-group">
+                <label class="form-label">应用密码</label>
+                <input type="password" class="form-input" id="wordpressPassword" placeholder="应用密码">
+                <p class="form-hint">在 WordPress 后台 → 用户 → 个人设置中生成应用密码</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 博客园 -->
+          <div class="selfhosted-card">
+            <div class="card-header">
+              <h3>博客园</h3>
+              <label class="switch-label">
+                <input type="checkbox" id="cnblogsEnabled">
+                <span class="switch"></span>
+              </label>
+            </div>
+            <div class="card-content">
+              <div class="form-group">
+                <label class="form-label">MetaWeblog API 地址</label>
+                <input type="url" class="form-input" id="cnblogsApiUrl" placeholder="https://rpc.cnblogs.com/metaweblog/你的博客名">
+              </div>
+              <div class="form-group">
+                <label class="form-label">用户名</label>
+                <input type="text" class="form-input" id="cnblogsUsername" placeholder="用户名">
+              </div>
+              <div class="form-group">
+                <label class="form-label">密码</label>
+                <input type="password" class="form-input" id="cnblogsPassword" placeholder="密码">
+              </div>
+            </div>
+          </div>
+
+          <!-- Typecho -->
+          <div class="selfhosted-card">
+            <div class="card-header">
+              <h3>Typecho</h3>
+              <label class="switch-label">
+                <input type="checkbox" id="typechoEnabled">
+                <span class="switch"></span>
+              </label>
+            </div>
+            <div class="card-content">
+              <div class="form-group">
+                <label class="form-label">XML-RPC 地址</label>
+                <input type="url" class="form-input" id="typechoApiUrl" placeholder="https://your-site.com/index.php/action/xmlrpc">
+              </div>
+              <div class="form-group">
+                <label class="form-label">用户名</label>
+                <input type="text" class="form-input" id="typechoUsername" placeholder="用户名">
+              </div>
+              <div class="form-group">
+                <label class="form-label">密码</label>
+                <input type="password" class="form-input" id="typechoPassword" placeholder="密码">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 关于 -->
+      <section id="about" class="section">
+        <h2 class="section-title">关于文章同步助手</h2>
+
+        <div class="about-content">
+          <div class="about-logo">
+            <img src="../icons/icon128.png" alt="Logo">
+          </div>
+          <h3>文章同步助手</h3>
+          <p class="version">版本 1.0.0</p>
+
+          <div class="about-features">
+            <h4>主要功能</h4>
+            <ul>
+              <li>一键批量发布到 29+ 自媒体平台</li>
+              <li>网页转 Markdown，支持图片本地化</li>
+              <li>自建站支持（WordPress、Typecho、博客园）</li>
+              <li>智能提取文章标题、内容、封面图</li>
+              <li>图片自动上传到目标平台</li>
+              <li>AI 功能：优化、翻译、摘要、标题生成</li>
+            </ul>
+          </div>
+
+          <div class="about-links">
+            <a href="https://github.com/jiajai2587/ai-" target="_blank" class="btn">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+              </svg>
+              GitHub
+            </a>
+            <a href="#" class="btn btn-secondary" id="btn-export-config">导出配置</a>
+            <a href="#" class="btn btn-secondary" id="btn-import-config">导入配置</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 保存按钮 -->
+      <div class="save-bar">
+        <button class="btn btn-primary" id="btn-save">保存设置</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast 提示 -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../utils/storage.js"></script>
+  <script src="../utils/helpers.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

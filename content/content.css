@@ -1,0 +1,167 @@
+/**
+ * 文章同步助手 - 内容脚本样式
+ */
+
+/* 同步助手浮层 */
+.article-sync-helper-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-sync-helper-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: auto;
+  z-index: 1000000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.article-sync-helper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.article-sync-helper-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.article-sync-helper-close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #f5f5f5;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-sync-helper-close:hover {
+  background: #eee;
+}
+
+.article-sync-helper-content {
+  padding: 20px;
+}
+
+/* 提取按钮 */
+.article-sync-extract-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 100px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 999998;
+}
+
+.article-sync-extract-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.5);
+}
+
+/* 提取成功提示 */
+.article-sync-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  background: #10B981;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000001;
+  animation: slideIn 0.3s ease;
+}
+
+.article-sync-toast.error {
+  background: #EF4444;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 高亮选中内容 */
+.article-sync-highlight {
+  background: rgba(79, 70, 229, 0.2);
+  border: 2px solid #4F46E5;
+  border-radius: 4px;
+}
+
+/* 进度条 */
+.article-sync-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #4F46E5;
+  z-index: 9999999;
+  transition: width 0.3s;
+}
+
+/* 工具栏 */
+.article-sync-toolbar {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 999998;
+}
+
+.article-sync-toolbar-btn {
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.article-sync-toolbar-btn:hover {
+  border-color: #4F46E5;
+  color: #4F46E5;
+}
