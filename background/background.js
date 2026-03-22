@@ -1,15 +1,43 @@
 /**
  * 文章同步助手 - Background Service Worker
- * 负责管理平台适配器、发布调度、AI 服务等核心功能
  */
 
-// 导入模块（Service Worker 环境下使用 importScripts）
-importScripts('../utils/storage.js');
-importScripts('../utils/helpers.js');
-importScripts('../utils/request.js');
+// 存储工具
+const Storage = {
+  async get(keys) {
+    return new Promise((resolve, reject) => {
+      chrome.storage.local.get(keys, (result) => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  },
 
-// 注册适配器
-const adapters = new Map();
+  async set(data) {
+    return new Promise((resolve, reject) => {
+      chrome.storage.local.set(data, () => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        } else {
+          resolve();
+        }
+      });
+    });
+  },
+
+  config: {
+    async get() {
+      const result = await Storage.get('config');
+      return result.config || { platforms: {}, ai: { provider: 'chrome' }, publish: { defaultMode: 'draft' } };
+    },
+    async set(config) {
+      await Storage.set({ config });
+    }
+  }
+};
 
 // 初始化
 chrome.runtime.onInstalled.addListener(async () => {
